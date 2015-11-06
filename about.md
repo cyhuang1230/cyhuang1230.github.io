@@ -11,7 +11,7 @@ permalink: /about/
 </p>
 
 Hi! I'm <i>Chien-Yu Huang</i>, currently studying CS in ***National Chiao Tung University*** (NCTU; 國立交通大學), Taiwan. <br/>
-Also, I am now working at ***KKBOX Taiwan*** as an **engineering intern** on the advertising solutions team. <br/>
+Also, I am now working at ***KKBOX Taiwan*** as an **Engineering Intern** on the advertising solutions team. <br/>
 If you have any questions or suggestions, feel free to contact me at `denny.cyhuang1230[at]gmail.com`! Thanks :)
 
 My GitHub Page → [cyhuang1230 @GitHub](https://github.com/cyhuang1230/)
