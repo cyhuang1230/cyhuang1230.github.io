@@ -1,0 +1,19 @@
+---
+layout: post
+title:  "NP HW1: Remote Access System (RAS)"
+date:   2015-11-02 21:53:45
+categories: Coursework NetworkProgramming
+---
+In this homework, we were asked to build a <b>remote access system</b>. It's kind of like a shell on the server. <br/>
+For more detail, please refer to & `hw1Spec.txt` in the repository (`cyhuang1230/NetworkProgramming`).
+
+Demo video:
+![np_hw1_demo](https://raw.githubusercontent.com/cyhuang1230/cyhuang1230.github.io/master/np_hw1.gif)
+
+Source → [cyhuang1230/NetworkProgramming](https://github.com/cyhuang1230/NetworkProgramming) <br/>
+
+Please look for `NP_project1.cpp`. <br/>
+Try this: `make hw1`. <br/>
+Try with debug message: `make hw1_debug`.
+
+

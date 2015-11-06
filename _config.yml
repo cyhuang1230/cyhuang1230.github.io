@@ -1,0 +1,16 @@
+# Site settings
+title: Chien-Yu Huang's Blog
+author: Chien-Yu Huang (Denny)
+email: denny.cyhuang1230@gmail.com
+description: >
+ Chien-Yu Huang, CS in NCTU, Taiwan.
+ Engineering intern on the advertising solutions team in KKBOX Taiwan.
+baseurl: ""
+url: "http://cyhuang1230.github.io" # the base hostname & protocol for your site
+github_username: cyhuang1230 
+
+# Build settings
+markdown: kramdown
+
+# Custom
+permalink: /:year/:month/:title/
