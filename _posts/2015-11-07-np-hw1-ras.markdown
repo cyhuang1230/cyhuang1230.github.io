@@ -6,14 +6,12 @@ categories: Coursework NetworkProgramming
 ---
 In this homework, we were asked to build a <b>remote access system</b>. It's kind of like a shell on the server. <br/>
 For more detail, please refer to & `hw1Spec.txt` in the repository (`cyhuang1230/NetworkProgramming`).
-
+	
 Demo video:
-![np_hw1_demo](http://{{site.url}}/resources/np_hw1.gif)
+![np_hw1_demo](/resources/np_hw1.gif)
 
 Source → [cyhuang1230/NetworkProgramming](https://github.com/cyhuang1230/NetworkProgramming) <br/>
 
 Please look for `NP_project1.cpp`. <br/>
 Try this: `make hw1`. <br/>
 Try with debug message: `make hw1_debug`.
-
-
