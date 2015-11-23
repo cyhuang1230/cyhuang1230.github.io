@@ -1,0 +1,72 @@
+---
+layout: post
+title:  "NP HW2: Remote Working Ground (RWG)"
+date:   2015-11-23 14:53:45
+categories: Coursework_15Fall Network_Programming
+author: Chien-Yu Huang
+---
+<p>In this network programming homework, we are asked to build a <b>remote working ground</b> (RWG), which is actually a combination of hw1 and chat & public pipe function.</p>
+
+According to the spec(`hw2Spec.txt`), we need to write two programs:<br/>
+1. Use the <b>single-process concurrent</b> paradigm.<br/>
+2. Use the <b>concurrent connection-oriented</b> paradigm with <b>shared memory</b>.
+
+For more details, please refer to `hw2Spec.txt` in the repository (`cyhuang1230/NetworkProgramming`).
+
+There are some notable ideas I came up with and described as follows.<br/>
+(I will start with version II since I wrote that first :P)
+
+***For concurrent version:***
+
+- Keep track of client's data (e.g. `sockfd`, `pid`...) so that we can send msg to each client.
+- Store client data & messages in shared memory so let every child can read.
+- Create additional `MAX_USER`(# of user) blocks of shm to store direct msg (or broadcst msg).
+- There's no way server can be closed properly (must end by `Ctrl+C`), so, in order not to leave any shm unrelaesed,
+  we won't `shmget` until the first client is connected, and free shm when all clients are disconnected.<br/>
+  → To keep track of the number of children, `sa_handler` needs to be implemented separately.<br/>
+  → Furthermore, ***MUST*** reset `sa_handler` in the child process so that won't mistakenly detach shm later when `exec`.
+- Use signal `SIGUSR1` to notify other process there's a new msg to write.
+- __Semaphore__ on public pipes to prevent concurrent issue. (Same create/release idea as shm.)
+- Use `FIFO`, a.k.a `Named pipe`, to implement public pipe. [No need to store in shm].
+- Implement a __generic function__ to send msg to a specific user.<br/>
+Function hierarchy:<br/>
+→ `sendRawMsgToClient` → `tell` <br/>
+→ `sendRawMsgToClient` → `broadcastRawMsg`  → `yell`/`name`/`who`
+
+***For single-process version:***
+
+- Basically same structure as ver. II, 
+  but as a single-process program, we don't need any shm or semaphore, which makes it much easier, yayyy!.
+- Only involves one huge adjustment.<br/>
+  Consider the following input:
+    
+~~~
+[Client 1] % ls |1
+[Client 2] % ls |1
+[Client 1] % cat
+[Client 2] (empty) <- stucked, prompt won't display
+~~~
+
+&nbsp;&nbsp;&nbsp;&nbsp;This error is caused by the way we decide input.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;→ We can no longer expect the whole input with `numbered-pipe` can be got in one while loop.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;→ Instead, we have to check input ***line by line***, and keep track of input-related information.
+
+
+
+	
+Demo video: (client is not included in the repo)<br/>
+![np_hw2_demo](/resources/np_hw2.gif)
+
+Source → [cyhuang1230/NetworkProgramming](https://github.com/cyhuang1230/NetworkProgramming) <br/>
+
+<b>For ver. I</b> (Single process):<br/>
+Please look for `NP_project2_Single.cpp`. <br/>
+To try: `make hw2s` and run `./np_hw2s`. <br/>
+*Try with debug message: `make hw2_debugs` and run `./np_hw2s`.
+
+<b>For ver. II</b> (Concurrent):<br/>
+Please look for `NP_project2_Concurrent.cpp`. <br/>
+To try: `make hw2` and run `./np_hw2`. <br/>
+*Try with debug message: `make hw2_debug` and run `./np_hw2`.
+
+*Debug version is complied with `-g`, which may use `gdb np_hw2(s)` to debug.
