@@ -11,7 +11,11 @@ github_username: cyhuang1230
 
 # Build settings
 #markdown: kramdown
-markdown: KramdownPygments
+markdown: rdiscount
 
 # Custom
 permalink: /:year/:month/:title/
+
+# mirror Github settings
+safe: true
+lsi: false
