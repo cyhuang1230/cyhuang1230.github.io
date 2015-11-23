@@ -5,7 +5,7 @@ date:   2015-11-02 21:53:45
 categories: Coursework_15Fall Network_Programming
 author: Chien-Yu Huang
 ---
-In this network programming homework, we were asked to build a <b>remote access system</b>. It's kind of like a shell on the server side. <br/>
+In this [network programming](https://course.nctu.edu.tw/Course/CrsOutline/show.asp?Acy=104&Sem=1&CrsNo=5247) homework, we were asked to build a <b>remote access system</b>. It's kind of like a shell on the server side. <br/>
 For more details, please refer to `hw1Spec.txt` in the repository (`cyhuang1230/NetworkProgramming`).
 	
 Demo video:<br/>

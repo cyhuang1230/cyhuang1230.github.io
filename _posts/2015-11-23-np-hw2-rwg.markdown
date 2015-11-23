@@ -5,7 +5,7 @@ date:   2015-11-23 14:53:45
 categories: Coursework_15Fall Network_Programming
 author: Chien-Yu Huang
 ---
-<p>In this network programming homework, we are asked to build a <b>remote working ground</b> (RWG), which is actually a combination of hw1 and chat & public pipe function.</p>
+In this [network programming](https://course.nctu.edu.tw/Course/CrsOutline/show.asp?Acy=104&Sem=1&CrsNo=5247) homework, we are asked to build a <b>remote working ground</b> (RWG), which is actually a combination of hw1 and chat & public pipe function.
 
 According to the spec(`hw2Spec.txt`), we need to write two programs:<br/>
 1. Use the <b>single-process concurrent</b> paradigm.<br/>

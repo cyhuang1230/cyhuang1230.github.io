@@ -10,7 +10,8 @@ url: "http://cyhuang1230.github.io" # the base hostname & protocol for your site
 github_username: cyhuang1230 
 
 # Build settings
-markdown: kramdown
+#markdown: kramdown
+markdown: KramdownPygments
 
 # Custom
 permalink: /:year/:month/:title/
