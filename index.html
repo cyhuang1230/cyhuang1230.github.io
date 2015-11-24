@@ -7,9 +7,14 @@ layout: default
   <h1 class="page-heading">Posts</h1>
 
   <ul class="post-list">
+    {% assign is_first = true %}
     {% for post in site.posts %}
       <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span> 
+        {% if is_first %}
+          <span style="color: red; font-weight: 500;">NEW!</span>
+          {% assign is_first = false %}
+        {% endif %}
 
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
