@@ -1,0 +1,64 @@
+---
+layout: post
+title:  "NP HW3: Remote Batch System (RBS)"
+date:   2015-12-24 12:54:45
+categories: Coursework_15Fall Network_Programming
+author: Chien-Yu Huang
+---
+In this [network programming](/NCTU_NP) homework, we are asked to build a <b>Remote Batch System</b> (RBS). It's actually a combination of client and server, whose diagram can be drawn as follows:
+
+![rbs_diagram](/resources/np_hw3_diagram.svg)
+
+
+As required in spec(`hw3Spec.txt`), we have to write three programs: <br/>
+1. `CGI`: a webpage(`hw3.cgi`) that displays server's response dynamically.<br/>
+2. `HTTP Server`: a cpp program that runs as a HTTP server.<br/>
+3.  `Winsock`: a combination of 1. and 2. but using `Winsock`.<br/>
+
+
+For more details, please refer to `hw3Spec.txt` in the repository (`cyhuang1230/NetworkProgramming`).
+
+There are some notable ideas I came up with and described as follows.<br/>
+
+***For CGI (Part I):***<br/>
+- Write may fail. Write a wrapper class to handle this.<br/>
+- Parsing query string needs to be handled carefully.<br/>
+- Since we're client now, doesn't matter which port to use, i.e. no need to `bind` anymore!<br/>
+- Try using `flag`(bitwise comparison) instead of individually specifying each property in `log` function.<br/>
+- Output recerived from servers should be handled(e.g. `\n`, `<`, `>`, `&`, `'`, `"`) since JavaScript has different escape characters than C. Also, the order of processing characters matters.<br/>
+- Most importantly, <span style="color: red; font-weight: 700">non-blocking client design</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;[1] `connect` may be blocked due to slow connection.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=> Set `O_NONBLOCK` to sockfd<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;[2] Client program may block (e.g. `sleep`)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=> Don't wait for response (i.e. `read`) after `write` to server. Instead, use `select` to check when the response is ready to `read`.<br/>
+
+***For HTTP Server (Part II):***<br/>
+- Use `select` to accept connections.<br/>
+- Fork a child process to handle request.<br/>
+- Plain text file can be `read` & `write` directly. Content type needs to be set properly.<br/>
+- CGI needs to be `exec`ed. => `dup` its `STDOUT_FILENO` to sockfd.<br/>
+
+***For Winsock (Part III):***<br/>
+- Same logic as `Berkeley Socket` version.<br/>
+- To read file, use `ReadFile` instead of `ReadFileEx` (I encountered pointer error)<br/>
+- Keep track of `doneMachines`. When done (`== numberOfMachines`), close socket and print footer.<br/>
+- I like `Berkeley Socket` much more than `Winsock` :( <br/>
+
+
+	
+Demo video:<br/>
+![np_hw3_demo](/resources/np_hw3.gif)
+
+Source → [cyhuang1230/NetworkProgramming](https://github.com/cyhuang1230/NetworkProgramming) <br/>
+
+<b>For part I</b> (CGI):<br/>
+Please look for `NP_project3_1.cpp`. <br/>
+To try: `make hw3_1_debug`, upload to a HTTP server and run `<BASE_URL>/hw3.cgi`. <br/>
+
+<b>For part II</b> (HTTP Server):<br/>
+Please look for `NP_project3_2.cpp`. <br/>
+To try: `make hw3_2_debug` and run `./np_hw3`. <br/>
+
+<b>For part III</b> (Winsock):<br/>
+Please look for `NP_project3_3.cpp`. Run with Visual Studio is recommended.<br/>
+
