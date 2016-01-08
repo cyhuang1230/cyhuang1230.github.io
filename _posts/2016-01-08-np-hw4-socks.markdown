@@ -1,0 +1,53 @@
+---
+layout: post
+title:  "NP HW4: SOCKS4 Server & Client"
+date:   2016-01-08 10:04:34
+categories: Coursework_15Fall Network_Programming
+author: Chien-Yu Huang
+---
+In this [network programming](/NCTU_NP) homework, we are asked to build <b>SOCKS4 server and client</b> and combine HW3 to demo.
+
+Spec is not included; however, the basic architecture can be illustrated as follows:
+![rbs_diagram](/resources/np_hw4_diagram.svg)
+
+
+There are some notable ideas I came up with:<br/>
+
+***For SOCKS client (CGI):***<br/>
+- Same as HW3. Just need to send SOCK4 requset and handle SOCK4 reply.<br/>
+
+***For SOCKS Server:***<br/>
+
+\- `CONNECT` mode procedure:<br/>
+
+~~~
+accept → read SOCKS req → check firewall rules →
+connect to dest host → send SOCKS reply → redirect data
+~~~
+
+\- `BIND` mode procedure:<br/>
+
+~~~
+accept → read SOCKS req → check firewall rules →
+bind socket → listen → send SOCKS reply → 
+accpet from server → send SOCKS reply (to original client) → redirect data
+~~~
+
+\- When redirecting data, should avoid using `strncpy` since it may contain `'\0'` in data,
+which occasionally leads to data error (less bytes are copied than expected).<br/>
+\- When `bind` with system-assigned port, give `0` to `sockaddr_in.sin_port`.<br/>
+
+	
+Demo video:<br/>
+![np_hw4_demo](/resources/np_hw4.gif)
+
+Source → [cyhuang1230/NetworkProgramming](https://github.com/cyhuang1230/NetworkProgramming) <br/>
+
+<b>For SOCKS client</b> (CGI):<br/>
+Please look for `NP_project4_Server.cpp`. <br/>
+To try: `make hw4_cgi `, upload to a HTTP server and run `<BASE_URL>/hw4.cgi`. <br/>
+
+<b>For SOCKS server</b>:<br/>
+Please look for `NP_project4_Server.cpp`. <br/>
+To try: `make hw4_server ` and run `./np_hw4`. <br/>
+
