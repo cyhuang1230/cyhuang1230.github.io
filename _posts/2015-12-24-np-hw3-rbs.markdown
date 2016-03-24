@@ -2,7 +2,7 @@
 layout: post
 title:  "NP HW3: Remote Batch System (RBS)"
 date:   2015-12-24 12:54:45
-categories: nctu_project Coursework_15Fall Network_Programming
+categories: nctu_project Coursework_15Fall network_programming
 author: Chien-Yu Huang
 ---
 In this [network programming](/NCTU_NP) homework, we are asked to build a <b>Remote Batch System</b> (RBS). It's actually a combination of client and server, whose diagram can be drawn as follows:

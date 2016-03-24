@@ -2,7 +2,7 @@
 layout: post
 title:  "NP HW2: Remote Working Ground (RWG)"
 date:   2015-11-23 14:53:45
-categories: nctu_project Coursework_15Fall Network_Programming
+categories: nctu_project Coursework_15Fall network_programming
 author: Chien-Yu Huang
 ---
 In this [network programming](https://course.nctu.edu.tw/Course/CrsOutline/show.asp?Acy=104&Sem=1&CrsNo=5247) homework, we are asked to build a <b>remote working ground</b> (RWG), which is actually a combination of hw1 and chat & public pipe function.
