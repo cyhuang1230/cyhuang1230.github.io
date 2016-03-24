@@ -4,7 +4,7 @@ title: School Projects (NCTU)
 permalink: /NCTU_Projects/
 ---
 
-Projects I worked during the time in CS, NCTU.<br/>
+Projects I've worked on when studying in CS, NCTU.<br/>
 
 
 <ul class="post-list">
