@@ -2,7 +2,7 @@
 layout: post
 title:  "NP HW1: Remote Access System (RAS)"
 date:   2015-11-02 21:53:45
-categories: Coursework_15Fall Network_Programming
+categories: nctu_project Coursework_15Fall Network_Programming
 author: Chien-Yu Huang
 ---
 In this [network programming](https://course.nctu.edu.tw/Course/CrsOutline/show.asp?Acy=104&Sem=1&CrsNo=5247) homework, we were asked to build a <b>remote access system</b>. It's kind of like a shell on the server side. <br/>

@@ -2,7 +2,7 @@
 layout: post
 title:  "NP HW4: SOCKS4 Server & Client"
 date:   2016-01-08 10:04:34
-categories: Coursework_15Fall Network_Programming
+categories: nctu_project Coursework_15Fall Network_Programming
 author: Chien-Yu Huang
 ---
 In this [network programming](/NCTU_NP) homework, we are asked to build <b>SOCKS4 server and client</b> and combine HW3 to demo.
