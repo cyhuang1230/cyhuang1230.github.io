@@ -37,7 +37,7 @@ Result for different k's (-1 data points means not limited):
 
 Result for pickup data with k = 5:
 
-```
+~~~~~~
 ==> 5 clusters with SSE = 1310382.527, total 10 iterations, duration: 0:58:44.093826
 -------------
 [k = 5] Centroid #0 @(-73.98239742908652,40.75556979631838) with r = 21.86850019225871 [14815015 points]
@@ -45,14 +45,14 @@ Result for pickup data with k = 5:
 [k = 5] Centroid #2 @(-73.96136756589190,40.78012632758659) with r = 23.04849337580119 [8147234 points]
 [k = 5] Centroid #3 @(-73.99744188868137,40.72594059025759) with r = 662.30254596214866 [9716760 points]
 [k = 5] Centroid #4 @(-73.87396560811541,40.76951321876881) with r = 33.88323463224077 [1095900 points]
-```
+~~~~~~
 
 → Choose <span style="text-decoration: underline;">Centroid #0 @(-73.98239742908652,40.75556979631838) with r = 21.86850019225871 [14815015 points]</span>
 
 
 Result for dropoff data with k = 5:
 
-```
+~~~~~~
 ==> 5 clusters with SSE = 3431839.916, total 36 iterations, duration: 3:28:30.800414
 -------------
 [k = 5] Centroid #0 @(-73.76951586370677,40.65764030599616) with r = 260.34678752815660 [463269 points]
@@ -60,7 +60,7 @@ Result for dropoff data with k = 5:
 [k = 5] Centroid #2 @(-73.95882476626755,40.78457504343687) with r = 439.94876239844325 [8876526 points]
 [k = 5] Centroid #3 @(-73.99645795122916,40.71086509646405) with r = 695.53686724899160 [6822543 points]
 [k = 5] Centroid #4 @(-73.88058752281310,40.76332250437670) with r = 35.03531452510111 [1260853 points]
-```
+~~~~~~
 
 → Choose <span style="text-decoration: underline;">Centroid #1 @(-73.98447812146631,40.75200522654204) with r = 27.07032741216307 [17186117 points]</span>
 

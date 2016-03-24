@@ -11,7 +11,7 @@ github_username: cyhuang1230
 
 # Build settings
 #markdown: kramdown
-markdown: rdiscount
+#markdown: rdiscount
 
 # Custom
 permalink: /:year/:month/:title/
