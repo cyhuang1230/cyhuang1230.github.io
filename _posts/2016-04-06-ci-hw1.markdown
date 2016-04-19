@@ -1,0 +1,86 @@
+---
+layout: post
+title:  "CI Project1: [Neural Networks] Multi-Layer Perceptron Based Classifier"
+date:   2016-04-06 13-29-33
+categories: nctu_project Coursework_16Spring ci
+author: Chien-Yu Huang
+---
+In this [Computational Intelligence and Applications](/NCTU_CI) project, we were asked to **implement multi-layer perceptrons and experiment with them as classifiers.** Test data are two-dimentional points and classified into class `1` or `2`.
+
+### _Environment_
+1. `Python 3.5` with library `matplotlib 1.5.1`(for ploting figures)
+2. Running on `OSX 10.11 with Intel Core i5 2.6GHz & 8GB 1600Mhz DDR3` or `AWS Ubuntu Server 14.04 64bit (instance type: t2.micro)`
+
+### _Methodology_
+
+1. Use __online version__ of backpropagation algorithm since it's been told<sup>[2]</sup> to be better than batch version.
+2. In total of 400 data points from two files, take __320~360 as training set__ and the remaining as validation set.
+3. The activation function is the __logistic function__.
+4. The neural network consists of __2 layers, _1 hidden layer + 1 output layer_.__<br/>
+    The number of neurons of hidden layer is __4__. (will be explained later)<br/>
+5. Learning rate η is initially set to __0.05__, and adjusted to __0.01__ later on.
+6. The stopping criterion is __running 10,000 epochs__ or __100,000 epochs__, depending on the number of hidden neurons (to avoid long running time).
+7. __Momentum term__ is integrated later.
+
+### _Experiments_
+First, try several different numbers (i.e., 32, 16, 8, 4, 2) of neurons in the hidden layer to choose the best model, <span style="color:red">which is having __4 hidden neurons__ in the hidden layer.</span>
+
+(PS. HN: hidden neuron, LR: learning rate, TS: Training set, VS: validation set, MA: alpha term in momentum)
+
+| ![](/resources/ci_hw1_1459545165-32hidden-0.05lr-370training-30validation.png) | ![](/resources/ci_hw1_1459546332-16hidden-0.05lr-370training-30validation.png) |
+
+|![](/resources/ci_hw1_1459546944-8hidden-0.05lr-370training-30validation.png)|![](/resources/ci_hw1_1459549710-4hidden-0.05lr-370training-30validation.png)|
+
+|![](/resources/ci_hw1_1459549901-2hidden-0.05lr-370training-30validation.png)| ←↑ Results of running 10,000 epochs on a NN of **_HN(32, 16, 8, 4, 2) neurons in the hidden layer_**, 0.05 learning rate, 370 data points in training set, 30 data points in validation set and no momentum term|
+
+---
+
+Second, since the amplitude of oscillation in the above figures is too large, I deceided to run the experiment again with **lower learning rate**, that is, **0.01** to see if it will get better.
+
+Also, **adjust the ratio** of the size of training set to the size of validation set **to 80:20** (i.e., 320TS & 80VS), which is the recommended ratio.
+
+|![](/resources/ci_hw1_1459604094-32hidden-0.01lr-320training-80validation.png)|![](/resources/ci_hw1_1459605499-16hidden-0.01lr-320training-80validation.png)|
+
+|![](/resources/ci_hw1_1459603478-8hidden-0.01lr-320training-80validation.png)|![](/resources/ci_hw1_1459603792-4hidden-0.01lr-320training-80validation.png)|
+
+|![](/resources/ci_hw1_1459603979-2hidden-0.01lr-320training-80validation.png)| ←↑ Results of running 10,000 epochs on a NN of **_HN(32, 16, 8, 4, 2) neurons in the hidden layer_**, 0.01 learning rate, 320 data points in training set, 80 data points in validation set and no momentum term
+
+---
+
+Third, integrate **momemtum** into the neural network and **highlight the first epoch that satisfy _the early stopping criterion_** (shown as blue veritcal line with epoch number).
+
+Moreover, since the number of neurons has chosen to be 4, increase the stopping criterion to 100,000 epochs to get more precise result.
+
+Also, I noticed that learning curves in `second` step is quite strange and I suspected that it's because the training set is too small to achieve the correct model. Therefore, I tweaked the TS:VS ratio to 90:10 (i.e., 360TS & 40VS).
+
+|![](/resources/ci_hw1_1459673540-4hidden-0.01lr-0.8MA-360training-40validation-epoch.png)|![](/resources/ci_hw1_1459672081-4hidden-0.01lr-0.6MA-360training-40validation-epoch.png)|
+
+|![](/resources/ci_hw1_1459670618-4hidden-0.01lr-0.4MA-360training-40validation-epoch.png)|![](/resources/ci_hw1_1459669140-4hidden-0.01lr-0.2MA-360training-40validation-epoch.png)|
+
+↑ Results of _running 100,000 epochs_ on a NN of 4 neurons in the hidden layer, 0.01 learning rate, 360 data points in training set, 40 data points in validation set, _**MA(0.8, 0.6, 0.4, 0.2) momentum term and early stopping highlight**_
+
+### _Analysis_
+
+[1] In the `first` part, I think the reason of causing _the large amplitude of oscillation_ is that I **set the learning rate too high(0.05)**. Therefore, when in the `second` part with lower learning rate(0.01), the amplitude of oscillation reduced significantly.
+
+[2] As one can see in `first` & `second` part, when the number of hidden neuron is equal or larger than 4, the shape of the learning curve becomes similar. Therefore, according to `Ockham's Razor`<sup>[3]</sup>, I selected the simplest one - ***4 neurons in the hidden layer***.
+
+[3] For the `third` part, I integrated the **momentum term** and the expected learning curve (i.e., after certain amount of time, the error of validation set increases due to overfitting the training set) has finaly shown.<br/>
+To investigate more deeply, I supposed that if `first` & `second` had ***more time (i.e., run with more epochs)***, they would have the same result as `third` and did another experiment that **runs 100,000 epochs with no momentum**. It turned out that the supposition is correct! The reason the learning curve was not obvious was that the running time wasn't enough.<br/>
+![](/resources/ci_hw1_1459932005-4hidden-0.01lr-0.0MA-360training-40validation-epoch.png)
+↑ Results of **_running 100,000 epochs_** on a NN of 4 neurons in the hidden layer, 0.01 learning rate, 360 data points in training set, 40 data points in validation set and no momentum term
+
+[4] For the `third` part, the four figures testified that the higher momentum is, the larger the amplitude of oscillation becomes.
+
+[5] However, in the `third` part, some unexpected results had shown. As far as I know, the higher momentum should have led to the increase of speed of convergence. Nevertheless, according to the figures in `thrid`, <span style='color: red;'>_the least epoch satisfying early stopping criterion is when momentum = 0.4 instead of 0.8_</span>. I think the reason was **the different (resulting from randomness) choice of initial biases**.
+
+[6] As for **normalization**, I _transformed all the points classified as `2` to `0`_ due to the output of activtion function (between 0~1, inclusive).
+
+### _Ref / Note_
+
+[1] Code ref: [A Step by Step Backpropagation Example &#8211; Matt Mazur](http://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/)
+
+[2] [Understanding Neural Network Batch Training: A Tutorial -- Visual Studio Magazine](https://visualstudiomagazine.com/articles/2014/08/01/batch-training.aspx)
+
+[3] [Occam's razor on Wikipedia](https://en.wikipedia.org/wiki/Occam%27s_razor)
+

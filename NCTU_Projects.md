@@ -17,6 +17,9 @@ Projects I've worked on when studying in CS, NCTU.<br/>
 			{% when 'bdataa' %}
 				{% assign link = "/NCTU_BDATAA/" %}
 				{% assign cat = "Big Data Analytics Techniques and Applications (2016 Spring)" %}
+			{% when 'ci' %}
+				{% assign link = "/NCTU_CI/" %}
+				{% assign cat = "Computational Intelligence and Application (2016 Spring)" %}
 			{% else %}
 				{% continue %}
 		{% endcase %}
