@@ -1,6 +1,6 @@
 ---
 layout: page
-title: NCTU Big Data Analytics Techniques and Applications Projects
+title: NCTU Computational Intelligence and Application Projects
 permalink: /NCTU_CI/
 ---
 
