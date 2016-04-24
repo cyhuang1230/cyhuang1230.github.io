@@ -84,3 +84,8 @@ To investigate more deeply, I supposed that if `first` & `second` had ***more ti
 
 [3] [Occam's razor on Wikipedia](https://en.wikipedia.org/wiki/Occam%27s_razor)
 
+---
+
+Source → [cyhuang1230/NCTU_CI](https://github.com/cyhuang1230/NCTU_CI) <br/>
+
+Please look for `HW1.py`. <br/>
