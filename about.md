@@ -12,8 +12,10 @@ permalink: /about/
 	<a href="mailto:denny.cyhuang1230@gmail.com"><img src="https://img.shields.io/badge/Email-denny.cyhuang1230%40gmail.com-blue.svg" alt="Email" style="max-width:100%;"></a>
 </p>
 
-Hi! I'm <i>Chien-Yu Huang</i>, currently studying CS in ***National Chiao Tung University*** (NCTU; 國立交通大學), Taiwan. <br/>
-Also, I am now working at **KKBOX Taiwan** as an **Engineering Intern** in the Advertising Solutions Team. <br/>
+Hi! This is Chien-Yu Huang.
+
+I now work at **Yahoo! Taiwan** as a software engineer, mainly responsible for backend development and data processing/reporting.
+
 If you have any questions or suggestions, feel free to contact me at `denny.cyhuang1230[at]gmail.com`! Thanks :)
 
 My GitHub Page → [cyhuang1230 @GitHub](https://github.com/cyhuang1230/)
