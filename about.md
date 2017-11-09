@@ -14,7 +14,7 @@ permalink: /about/
 
 Hi! This is Chien-Yu Huang.
 
-I now work at **Yahoo! Taiwan** as a software engineer, mainly responsible for backend development and data processing/reporting.
+I now work at **Garena Taiwan** as a software engineer, mainly responsible for backend development.
 
 If you have any questions or suggestions, feel free to contact me at `denny.cyhuang1230[at]gmail.com`! Thanks :)
 

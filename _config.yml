@@ -3,10 +3,10 @@ title: Chien-Yu Huang's Blog
 author: Chien-Yu Huang (Denny)
 email: denny.cyhuang1230@gmail.com
 description: >
- Chien-Yu Huang, a Software Engineer in Yahoo! Taiwan.
+ Chien-Yu Huang, a Software Engineer in Garena Taiwan.
 baseurl: ""
 url: "https://cyhuang1230.github.io"
-github_username: cyhuang1230 
+github_username: cyhuang1230
 
 # Build settings
 #markdown: kramdown
@@ -14,6 +14,7 @@ github_username: cyhuang1230
 
 # Custom
 permalink: /:year/:month/:title/
+excerpt_separator: <!--more-->
 
 # mirror Github settings
 safe: true
