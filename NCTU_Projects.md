@@ -9,7 +9,7 @@ Projects I've worked on when studying in CS, NCTU.<br/>
 
 <ul class="post-list">
 {% for category in site.categories %}
-		{% assign now_cat = (category | first) %}
+		{% assign now_cat = category | first %}
 		{% case now_cat %}
 			{% when 'network_programming' %}
 				{% assign link = "/NCTU_NP/" %}
