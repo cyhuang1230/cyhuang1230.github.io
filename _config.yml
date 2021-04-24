@@ -19,3 +19,4 @@ excerpt_separator: <!--more-->
 # mirror Github settings
 safe: true
 lsi: false
+theme: jekyll-theme-dinky
